@@ -10,5 +10,5 @@ public interface PostServiceV2 {
     public List<PostV2> getAll();
     public List<PostV2> add(PostV2 post);
     public List<PostV2> deleteById(long id);
-    public void update(PostV2 post);
+    public void update(PostV2 post, long id);
 }

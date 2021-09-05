@@ -33,7 +33,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void update(Post post) {
-        postRepository.update(post);
+    public void update(Post post, long id) {
+        postRepository.update(post, id);
     }
 }

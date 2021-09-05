@@ -35,7 +35,7 @@ public class PostServiceV2Impl implements PostServiceV2 {
     }
 
     @Override
-    public void update(PostV2 post) {
+    public void update(PostV2 post, long id) {
         postRepositoryV2.update(post);
     }
 }

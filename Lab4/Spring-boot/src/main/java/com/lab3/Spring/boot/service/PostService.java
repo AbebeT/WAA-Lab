@@ -9,6 +9,6 @@ public interface PostService {
     public List<Post> getAll();
     public List<Post> add(Post post);
     public List<Post> deleteById(long id);
-    public void update(Post post);
+    public void update(Post post, long id);
 
 }

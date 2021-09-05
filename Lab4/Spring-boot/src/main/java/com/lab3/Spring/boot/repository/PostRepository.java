@@ -9,5 +9,5 @@ public interface PostRepository {
     public List<Post> getAll();
     public List<Post> save(Post post);
     public List<Post> deleteById(long id);
-    public void update(Post post);
+    public void update(Post post, long id);
 }

@@ -103,9 +103,9 @@ public class PostController {
         return postServiceV2.add(post);
     }
 
-    @PutMapping
-    void updatePost(@RequestBody Post post) {
-        postService.update(post);
+    @PutMapping("/{id}")
+    void updatePost(@RequestBody Post post, @PathVariable long id) {
+        postService.update(post, id);
     }
 
 
