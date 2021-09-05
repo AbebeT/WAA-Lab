@@ -19,30 +19,33 @@ import java.util.List;
 public class PostController {
     @Autowired
     PostService postService;
+
+    @Autowired
     PostServiceV2 postServiceV2;
 
-    @RequestMapping(headers= "X-API-VERSION=1")
-    public List<Post> getAllPostV1(){
+    @RequestMapping(headers = "X-API-VERSION=1")
+    public List<Post> getAllPostV1() {
         return postService.getAll();
     }
 
-    @RequestMapping(headers= "X-API-VERSION=2")
-    public List<PostV2> getAllPostV2(){
+    @RequestMapping(headers = "X-API-VERSION=2")
+    public List<PostV2> getAllPostV2() {
+        System.out.println("all posts version 2: " + postServiceV2.getAll());
         return postServiceV2.getAll();
     }
 
-    @GetMapping(value= "/{id}", headers= "X-API-VERSION=1")
-    public EntityModel<Post> getPostById(@PathVariable long id){
+    @GetMapping(value = "/{id}", headers = "X-API-VERSION=1")
+    public EntityModel<Post> getPostById(@PathVariable long id) {
 
 
-        Post post =  postService.getPostById(id);
+        Post post = postService.getPostById(id);
 
         EntityModel<Post> resource = EntityModel.of(post);
 
         WebMvcLinkBuilder linkToAllPosts = WebMvcLinkBuilder
                 .linkTo(
                         WebMvcLinkBuilder.methodOn(this.getClass()).addPost(new Post()));
-        resource.add(linkToAllPosts.withRel("all-posts"));
+        resource.add(linkToAllPosts.withRel("post"));
 
         WebMvcLinkBuilder linkToDelete = WebMvcLinkBuilder
                 .linkTo(
@@ -53,18 +56,23 @@ public class PostController {
         return resource;
     }
 
-    @GetMapping(value = "/{id}", headers= "X-API-VERSION=2")
-    public EntityModel<PostV2> getPostByIdV2(@PathVariable long id){
+    @GetMapping(value = "/{id}", headers = "X-API-VERSION=2")
+    public EntityModel<PostV2> getPostByIdV2(@PathVariable long id) {
 
 
-        PostV2 post =  postServiceV2.getPostById(id);
+        PostV2 post = postServiceV2.getPostById(id);
 
         EntityModel<PostV2> resource = EntityModel.of(post);
+
+
+        WebMvcLinkBuilder linkBuilder = WebMvcLinkBuilder.linkTo(
+                WebMvcLinkBuilder.methodOn(this.getClass()).getAllPostV1());
+        resource.add(linkBuilder.withRel("all-posts"));
 
         WebMvcLinkBuilder linkToAllPosts = WebMvcLinkBuilder
                 .linkTo(
                         WebMvcLinkBuilder.methodOn(this.getClass()).addPostV2(new PostV2()));
-        resource.add(linkToAllPosts.withRel("all-posts"));
+        resource.add(linkToAllPosts.withRel("add-post"));
 
         WebMvcLinkBuilder linkToDelete = WebMvcLinkBuilder
                 .linkTo(
@@ -75,30 +83,30 @@ public class PostController {
         return resource;
     }
 
-    @DeleteMapping(value = "/{id}", headers= "X-API-VERSION=1")
-    public  List<Post> deletePost(@PathVariable long id ){
+    @DeleteMapping(value = "/{id}", headers = "X-API-VERSION=1")
+    public List<Post> deletePost(@PathVariable long id) {
         return postService.deleteById(id);
     }
-    @DeleteMapping(value = "/{id}" , headers= "X-API-VERSION=2")
-    public  List<PostV2> deletePostV2(@PathVariable long id ){
+
+    @DeleteMapping(value = "/{id}", headers = "X-API-VERSION=2")
+    public List<PostV2> deletePostV2(@PathVariable long id) {
         return postServiceV2.deleteById(id);
     }
 
-    @PostMapping(headers= "X-API-VERSION=1")
-    List<Post> addPost(@RequestBody  Post post){
+    @PostMapping(headers = "X-API-VERSION=1")
+    public List<Post> addPost(@RequestBody Post post) {
         return postService.add(post);
     }
 
-    @PostMapping(headers= "X-API-VERSION=2")
-    List<PostV2> addPostV2(@RequestBody  PostV2 post){
+    @PostMapping(headers = "X-API-VERSION=2")
+    public List<PostV2> addPostV2(@RequestBody PostV2 post) {
         return postServiceV2.add(post);
     }
 
     @PutMapping
-    void updatePost(@RequestBody Post post){
+    void updatePost(@RequestBody Post post) {
         postService.update(post);
     }
-
 
 
 }
