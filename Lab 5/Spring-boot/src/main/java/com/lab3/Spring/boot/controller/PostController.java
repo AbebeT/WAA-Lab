@@ -35,6 +35,9 @@ public class PostController {
         postService.save(post);
     }
 
+
+
+
 //    @PutMapping
 //    void updatePost(@RequestBody Post post){
 //        postService.update(post);
