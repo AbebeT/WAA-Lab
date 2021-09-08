@@ -38,10 +38,10 @@ public class PostController {
 
 
 
-    @PutMapping
-    void updatePost(@RequestBody Post post){
-        postService.update(post);
-    }
+//    @PutMapping
+//    void updatePost(@RequestBody Post post){
+//        postService.update(post);
+//    }
 
 
 
