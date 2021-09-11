@@ -39,6 +39,10 @@ public class UserController {
     public List<Post> getUserPosts(@PathVariable long id){
         return userService.findPostsByUserId(id);
     }
+    @GetMapping("/{id}/posts/{id2}")
+    public Post getUserPostsById(@PathVariable long id, @PathVariable long id2){
+        return userService.findPostsByUserId(id).stream().filter(p->p.getId() == id2).findFirst().get();
+    }
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable long id){

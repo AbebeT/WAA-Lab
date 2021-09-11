@@ -19,10 +19,11 @@ import java.util.List;
 @Table(name="user")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     @OneToMany(cascade= CascadeType.ALL)
-    @Fetch(FetchMode.JOIN)
+    @Fetch(FetchMode.SELECT)
     @JoinTable
     private List<Post> posts;
 
