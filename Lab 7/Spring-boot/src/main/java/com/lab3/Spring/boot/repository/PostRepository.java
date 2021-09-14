@@ -15,6 +15,4 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 //    public List<Post> updatePost(@Param("post")  Post post);
 
 
-
-
 }

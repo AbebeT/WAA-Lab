@@ -17,5 +17,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
             value = "SELECT * FROM User u WHERE u.id = :id",
             nativeQuery = true)
     public Optional<User> findPostsByUserId(@Param("id") long id);
+    public Optional<User> findByUsername(String username);
 
 }

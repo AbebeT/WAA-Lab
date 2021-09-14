@@ -14,7 +14,4 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 //    @Query(value = "update Post set Post.author = :post.getAuthor() where post.getId() = id")
 //    public List<Post> updatePost(@Param("post")  Post post);
 
-
-
-
 }
