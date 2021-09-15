@@ -1,18 +1,23 @@
 import { getDefaultNormalizer } from "@testing-library/react";
-import React from "react";
 import Students from "../../component/students/students";
-
+import React, { useState } from 'react';
 import "./Dash.css";
 
+
+
 const Dashboard = () => {
+    const [value, setValue] = useState("")
   return (
     <section>
-      <Students />
+      <Students name={value}/>
       <form>
+        
        
-        <input type="text" value="" />
+        <input id = "inputName" type="text" />
       </form>
-      <button>Change Name</button>
+      <button onClick={()=>setValue(document.getElementById("inputName").value)}>Change Name</button>
+      
+      
     </section>
   );
 };
