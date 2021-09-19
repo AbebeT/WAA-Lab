@@ -3,6 +3,8 @@ import axios from 'axios';
 import './NewPost.css';
 
 class NewPost extends Component {
+
+    
     state = {
         title: '',
         content: '',
@@ -14,15 +16,17 @@ class NewPost extends Component {
         const  headers = {"Access-Control-Allow-Origin": "*"};
         axios({
             method : 'post',
-            url : 'http://localhost:9090/posts',
+            url : 'http://localhost:8080/posts',
             data : {...this.state},
             headers : headers
             })
             .then(response => {
-                alert("post added!")
+               
     });
 
     }
+
+   
 
     render () {
         return (

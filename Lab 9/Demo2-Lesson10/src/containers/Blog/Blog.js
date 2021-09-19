@@ -16,8 +16,8 @@ const Blog = () => {
 
      const [deleteFlag, setDeleteFlag] = useState(0);
 
-     const baseURL = 'http://localhost:9090/posts' ;
-     const baseURL2 = 'http://localhost:9090/posts/1' ;
+     const baseURL = 'http://localhost:8080/posts' ;
+     const baseURL2 = 'http://localhost:8080/posts/1' ;
     
     useEffect(() => {
         axios.get(baseURL)

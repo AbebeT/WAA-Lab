@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,6 +18,7 @@ import javax.persistence.Table;
 public class Post {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String title;
     private String content;
