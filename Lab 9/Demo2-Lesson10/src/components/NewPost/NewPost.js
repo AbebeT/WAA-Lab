@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 import './NewPost.css';
 
 class NewPost extends Component {
@@ -7,6 +7,21 @@ class NewPost extends Component {
         title: '',
         content: '',
         author: 'Dean'
+    }
+    // baseURL = 'http://localhost:9090/posts' ;
+     
+    addHandler(){
+        const  headers = {"Access-Control-Allow-Origin": "*"};
+        axios({
+            method : 'post',
+            url : 'http://localhost:9090/posts',
+            data : {...this.state},
+            headers : headers
+            })
+            .then(response => {
+                alert("post added!")
+    });
+
     }
 
     render () {
@@ -23,7 +38,7 @@ class NewPost extends Component {
                     <option value="Zaineh">Zaineh</option>
                     <option value="Yasmeen">Yasmeen</option>
                 </select>
-                <button>Add Post</button>
+                <button onClick={()=>{this.addHandler()}}>Add Post</button>
             </div>
         );
     }

@@ -10,6 +10,7 @@ import java.util.Optional;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/posts")
 public class PostController {
     @Autowired
@@ -26,8 +27,8 @@ public class PostController {
     }
 
     @DeleteMapping("/{id}")
-    void deletePost(@PathVariable long id ){
-        postService.deleteById(id);
+    void deletePost(@PathVariable("id") long id ){
+        postService.deletePostById(id);
     }
 
     @PostMapping

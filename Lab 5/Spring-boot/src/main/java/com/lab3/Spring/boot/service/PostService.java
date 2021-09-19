@@ -10,6 +10,6 @@ public interface PostService {
     public List<Post> findAll();
     public void save(Post post);
     public void deleteById(long id);
-    public void update(Post post);
+    //public void update(Post post);
 
 }

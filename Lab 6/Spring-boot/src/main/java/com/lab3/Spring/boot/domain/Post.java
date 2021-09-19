@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Setter
 @Getter
 
-@CrossOrigin(origins = "http://localhost:3000")
+
 @Entity
 @Table(name = "POST")
 public class Post {

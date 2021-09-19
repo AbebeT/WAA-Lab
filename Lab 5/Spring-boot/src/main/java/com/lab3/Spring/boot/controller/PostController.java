@@ -10,6 +10,7 @@ import java.util.Optional;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/posts")
 public class PostController {
     @Autowired
@@ -37,11 +38,11 @@ public class PostController {
 
 
 
-
-    @PutMapping
-    void updatePost(@RequestBody Post post){
-        postService.update(post);
-    }
+//
+//    @PutMapping
+//    void updatePost(@RequestBody Post post){
+//        postService.update(post);
+//    }
 
 
 
